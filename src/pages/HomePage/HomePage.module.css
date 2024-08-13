@@ -10,15 +10,127 @@
 .leftHalf {
   width: 50%;
   height: 736px;
-  background-color: var(--red-theme-main);
+  background-color: var(--theme-main);
+  border-top-left-radius: 30px;
+  border-bottom-left-radius: 30px;
+  overflow: hidden;
 }
 
 .rightHalf {
+  position: relative;
   width: 50%;
   height: 736px;
+  border-top-right-radius: 30px;
+  border-bottom-right-radius: 30px;
+  overflow: hidden;
 
-  background-image: url('../../images/hero@2x.jpg');
+  background-image: linear-gradient(
+      0deg,
+      rgba(18, 20, 23, 0.6) 0%,
+      rgba(18, 20, 23, 0.6) 100%
+    ),
+    url('../../images/hero.jpg');
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
+}
+
+@media (min-resolution: 192dpi),
+  (min-resolution: 2dppx),
+  (min-device-pixel-ratio: 2) {
+  .rightHalf {
+    background-image: linear-gradient(
+        0deg,
+        rgba(18, 20, 23, 0.6) 0%,
+        rgba(18, 20, 23, 0.6) 100%
+      ),
+      url('../../images/hero@2x.jpg');
+  }
+}
+
+.heroBox {
+  position: absolute;
+  top: 251px;
+  left: 96px;
+  z-index: 9;
+  max-width: 517px;
+}
+
+.heading {
+  font-weight: 500;
+  font-size: 70px;
+  line-height: 100%;
+  letter-spacing: -0.03em;
+  color: var(--white-main);
+  margin-bottom: 28px;
+}
+
+.text {
+  font-size: 28px;
+  line-height: 107%;
+  letter-spacing: -0.02em;
+  color: var(--white-main);
+  margin-bottom: 64px;
+}
+
+button.button {
+  min-width: 230px;
+  height: 60px;
+  padding: 18px 50px;
+  gap: 18px;
+  fill: var(--white-main);
+}
+
+button.button:hover,
+button.button:focus {
+  color: var(--white-main);
+  border-color: var(--transp-button-border);
+}
+
+.icon {
+  transform: rotate(-53deg);
+  transition: transform var(--duration) var(--time function);
+}
+
+button.button:hover .icon,
+button.button:focus .icon {
+  transform: rotate(0deg);
+}
+
+.expBox {
+  position: absolute;
+  bottom: 50px;
+  right: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+  height: 118px;
+  max-width: 284px;
+  padding: 32px;
+  border-radius: 20px;
+  background-color: var(--white-main);
+}
+
+.checkDiv {
+  width: 54px;
+  height: 54px;
+  border-radius: 13px;
+  background-color: var(--theme-main);
+  fill: var(--white-main);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.expText {
+  font-size: 16px;
+  color: var(--grey-text);
+  margin-bottom: 6px;
+}
+
+.expCount {
+  font-weight: 700;
+  font-size: 24px;
+  color: var(--black-main);
 }

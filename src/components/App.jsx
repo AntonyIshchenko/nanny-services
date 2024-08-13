@@ -1,4 +1,4 @@
-import { lazy, Suspense } from 'react';
+import { lazy, Suspense, useEffect } from 'react';
 import { Route, Routes, Navigate } from 'react-router-dom';
 
 import AppBar from './AppBar/AppBar';
@@ -11,6 +11,11 @@ const FavoritesPage = lazy(() =>
 );
 
 function App() {
+  useEffect(() => {
+    document.body.classList.remove();
+    document.body.classList.add('red');
+  }, []);
+
   return (
     <>
       <AppBar />

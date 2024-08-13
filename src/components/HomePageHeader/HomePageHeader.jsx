@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 
 import Logo from '../Logo/Logo';
+import Button from '../Button/Button';
 import css from './HomePageHeader.module.css';
 
 function HomePageHeader() {
@@ -13,16 +14,34 @@ function HomePageHeader() {
         <div className={css.right}>
           <ul className={css.linksList}>
             <li>
-              <Link to="/">Home</Link>
+              <Link className={css.link} to="/">
+                Home
+              </Link>
             </li>
             <li>
-              <Link to="/nannies">Nannies</Link>
+              <Link className={css.link} to="/nannies">
+                Nannies
+              </Link>
             </li>
           </ul>
           <ul className={css.buttonsList}>
-            {!isLogged && <li>Log In</li>}
-            {!isLogged && <li>Registration</li>}
-            {isLogged && <li>Log out</li>}
+            {!isLogged && (
+              <li>
+                <Button className={css.button}>Log In</Button>
+              </li>
+            )}
+            {!isLogged && (
+              <li>
+                <Button className={css.button} filled={true}>
+                  Registration
+                </Button>
+              </li>
+            )}
+            {isLogged && (
+              <li>
+                <Button className={css.button}>Log out</Button>
+              </li>
+            )}
           </ul>
         </div>
       </nav>

@@ -35,6 +35,7 @@ html {
 a {
   color: currentColor;
   cursor: pointer;
+  text-decoration: none;
 }
 
 button {
@@ -50,6 +51,21 @@ img {
 ul,
 ol {
   list-style: none;
+}
+
+body.red {
+  --theme-main: #f03f3b;
+  --theme-light: rgba(240, 63, 59, 0.2);
+}
+
+body.green {
+  --theme-main: #103931;
+  --theme-light: rgba(16, 57, 49, 0.2);
+}
+
+body.blue {
+  --theme-main: #0957c3;
+  --theme-light: rgba(9, 87, 195, 0.2);
 }
 
 :root {
@@ -71,13 +87,6 @@ ol {
   --grey-modal: rgba(17, 16, 28, 0.3);
   --grey-text: rgba(17, 16, 28, 0.5);
   --feature-name: #8a8a89;
-
-  --red-theme-main: #f03f3b;
-  --red-theme-light: rgba(240, 63, 59, 0.2);
-  --blue-theme-main: #0957c3;
-  --blue-theme-light: rgba(9, 87, 195, 0.2);
-  --green-theme-main: #103931;
-  --green-theme-light: rgba(16, 57, 49, 0.2);
 
   /* ANIMATION */
   --duration: 300ms;
