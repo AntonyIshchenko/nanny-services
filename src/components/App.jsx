@@ -1,6 +1,8 @@
 import { lazy, Suspense, useEffect } from 'react';
 import { Route, Routes, Navigate } from 'react-router-dom';
 
+import { db } from '../utils/firebase-init.js';
+import { getDBData } from '../utils/firebase-operations.js';
 import AppBar from './AppBar/AppBar';
 import Layout from './Layout/Layout';
 
@@ -11,9 +13,19 @@ const FavoritesPage = lazy(() =>
 );
 
 function App() {
+  // const [dbConnected, setDbConnected] = useState(false);
+
   useEffect(() => {
     document.body.classList.remove();
     document.body.classList.add('red');
+  }, []);
+
+  useEffect(() => {
+    if (!db) {
+      console.log('DB is not connected!');
+    }
+
+    getDBData();
   }, []);
 
   return (
