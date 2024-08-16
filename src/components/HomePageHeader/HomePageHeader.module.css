@@ -53,3 +53,9 @@ button.button {
   font-size: 16px;
   line-height: 125%;
 }
+
+.modal {
+  background-color: var(--white-main);
+  border-radius: 30px;
+  padding: 64px;
+}

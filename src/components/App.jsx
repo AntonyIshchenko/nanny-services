@@ -38,7 +38,7 @@ function App() {
     // testData();
   }, []);
 
-  console.log(import.meta.env.DEV);
+  // console.log(import.meta.env.DEV);
 
   return (
     <>
