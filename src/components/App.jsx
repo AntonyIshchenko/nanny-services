@@ -1,8 +1,8 @@
 import { lazy, Suspense, useEffect } from 'react';
 import { Route, Routes, Navigate } from 'react-router-dom';
 
-import { db } from '../utils/firebase-init.js';
-import { getDBData } from '../utils/firebase-operations.js';
+import { db } from '../firebase/init.js';
+// import { getDBData } from '../firebase/operations.js';
 import AppBar from './AppBar/AppBar';
 import Layout from './Layout/Layout';
 
@@ -25,8 +25,20 @@ function App() {
       console.log('DB is not connected!');
     }
 
-    getDBData();
+    // async function testData() {
+    //   const resp = await getDBData(4, '2');
+    //   console.log(resp);
+    //   console.log(Array.isArray(resp.data));
+    //   console.log(resp.data[resp.data.length - 1]);
+
+    //   // if (Array.isArray(resp.data)) {
+    //   //   resp.data.forEach(el => console.log(el));
+    //   // }
+    // }
+    // testData();
   }, []);
+
+  console.log(import.meta.env.DEV);
 
   return (
     <>
