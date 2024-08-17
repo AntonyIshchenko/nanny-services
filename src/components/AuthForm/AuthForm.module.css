@@ -73,3 +73,15 @@ button.button {
 .input::placeholder {
   color: var(--grey-text);
 }
+
+.inputWrapper {
+  position: relative;
+}
+
+.errorText {
+  color: var(--error-main);
+  padding-left: 16px;
+  font-size: 14px;
+
+  position: absolute;
+}

@@ -76,7 +76,7 @@ function HomePageHeader() {
         className={css.modal}
         onClose={handleModalOpenClose}
       >
-        <AuthForm isLogIn={authLogInForm} onClose={handleModalOpenClose} />
+        <AuthForm logIn={authLogInForm} onClose={handleModalOpenClose} />
       </ModalContainer>
     </>
   );

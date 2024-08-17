@@ -80,6 +80,7 @@ body.blue {
   --black-main: #11101c;
   --white-main: #fbfbfb;
   --white-back: #f3f3f3;
+  --error-main: orangered;
   --transp-button-border: rgba(251, 251, 251, 0.4);
   --rating: #ffc531;
   --price: #38cd3e;
