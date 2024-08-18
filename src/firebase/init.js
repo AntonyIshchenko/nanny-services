@@ -1,7 +1,10 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from 'firebase/app';
 import { getDatabase } from 'firebase/database';
-import { getAuth } from 'firebase/auth';
+import { getAuth, onAuthStateChanged } from 'firebase/auth';
+
+import store from '../redux/store';
+import authOperations from '../redux/auth/operations';
 
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
@@ -25,3 +28,15 @@ export const app = initializeApp(firebaseConfig);
 export const db = getDatabase();
 
 export const auth = getAuth();
+
+onAuthStateChanged(auth, user => {
+  if (user) {
+    const { email, displayName, photoURL, uid } = user;
+    store.dispatch(
+      authOperations.loginSync({ email, displayName, photoURL, uid })
+    );
+    store.dispatch(authOperations.getTheme(uid));
+  } else {
+    store.dispatch(authOperations.logoutSync());
+  }
+});

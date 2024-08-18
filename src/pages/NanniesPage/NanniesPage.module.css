@@ -1,0 +1,9 @@
+button.loadMore {
+  padding: 14px 40px;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 125%;
+  letter-spacing: -0.01em;
+
+  margin: 0 auto;
+}

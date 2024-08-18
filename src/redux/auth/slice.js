@@ -1,7 +1,11 @@
 import { createSlice } from '@reduxjs/toolkit';
 
+import { handlePending, handleRejected } from '../../utils/handleLoading.js';
+import operations from './operations.js';
+
 const initialState = {
-  user: {},
+  user: { email: '', displayName: '', photoURL: '', uid: '' },
+  theme: null,
   isLogged: false,
   isLoading: false,
   error: null,
@@ -10,9 +14,36 @@ const initialState = {
 const slice = createSlice({
   name: 'auth',
   initialState,
-  //   extraReducers: builder => {
-  //     builder.addCase();
-  //   },
+  extraReducers: builder => {
+    builder
+      .addCase(operations.register.pending, handlePending)
+      .addCase(operations.register.rejected, handleRejected)
+      .addCase(operations.register.fulfilled, state => {
+        state.isLoading = false;
+        state.error = null;
+      })
+      .addCase(operations.login.pending, handlePending)
+      .addCase(operations.login.rejected, handleRejected)
+      .addCase(operations.login.fulfilled, state => {
+        state.isLoading = false;
+        state.error = null;
+      })
+      .addCase(operations.loginSync, (state, action) => {
+        state.user = action.payload;
+        state.isLogged = true;
+      })
+      .addCase(operations.logout.pending, handlePending)
+      .addCase(operations.logout.rejected, handleRejected)
+      .addCase(operations.logout.fulfilled, state => {
+        state.isLoading = false;
+        state.error = null;
+      })
+      .addCase(operations.logoutSync, state => {
+        state.user = initialState.user;
+        state.isLogged = false;
+        state.theme = null;
+      });
+  },
 });
 
 const reducer = slice.reducer;

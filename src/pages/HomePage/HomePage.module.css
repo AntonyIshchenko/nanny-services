@@ -88,6 +88,8 @@ button.button:focus {
 }
 
 .icon {
+  width: 18px;
+  height: 24px;
   transform: rotate(-53deg);
   transition: transform var(--duration) var(--time function);
 }

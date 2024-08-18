@@ -68,6 +68,14 @@ body.blue {
   --theme-light: rgba(9, 87, 195, 0.2);
 }
 
+body.home {
+  background-color: var(--white-main);
+}
+
+body.app {
+  background-color: var(--white-back);
+}
+
 :root {
   font-family: 'Helvetica Neue', sans-serif;
 

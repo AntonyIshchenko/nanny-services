@@ -2,9 +2,11 @@ import { lazy, Suspense, useEffect } from 'react';
 import { Route, Routes, Navigate } from 'react-router-dom';
 
 import { db } from '../firebase/init.js';
+import authSelectors from '../redux/auth/selectors.js';
 // import { getDBData } from '../firebase/operations.js';
 import AppBar from './AppBar/AppBar';
 import Layout from './Layout/Layout';
+import { useSelector } from 'react-redux';
 
 const HomePage = lazy(() => import('../pages/HomePage/HomePage.jsx'));
 const NanniesPage = lazy(() => import('../pages/NanniesPage/NanniesPage.jsx'));
@@ -13,32 +15,19 @@ const FavoritesPage = lazy(() =>
 );
 
 function App() {
+  const theme = useSelector(authSelectors.theme);
   // const [dbConnected, setDbConnected] = useState(false);
 
   useEffect(() => {
-    document.body.classList.remove();
-    document.body.classList.add('red');
-  }, []);
+    document.body.classList.remove('red', 'green', 'blue');
+    document.body.classList.add(theme || 'red');
+  }, [theme]);
 
   useEffect(() => {
     if (!db) {
       console.log('DB is not connected!');
     }
-
-    // async function testData() {
-    //   const resp = await getDBData(4, '2');
-    //   console.log(resp);
-    //   console.log(Array.isArray(resp.data));
-    //   console.log(resp.data[resp.data.length - 1]);
-
-    //   // if (Array.isArray(resp.data)) {
-    //   //   resp.data.forEach(el => console.log(el));
-    //   // }
-    // }
-    // testData();
   }, []);
-
-  // console.log(import.meta.env.DEV);
 
   return (
     <>

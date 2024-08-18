@@ -1,14 +1,22 @@
 import { useLocation, NavLink } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
 
 import Logo from '../Logo/Logo';
 import Button from '../Button/Button';
+import authSelectors from '../../redux/auth/selectors';
+import authOperations from '../../redux/auth/operations';
 import css from './AppBar.module.css';
 
 function AppBar() {
   const location = useLocation();
-  const isLogged = false;
+  const isLogged = useSelector(authSelectors.isLogged);
+  const dispatch = useDispatch();
 
   if (location.pathname === '/') return <></>;
+
+  const handleLogout = () => {
+    dispatch(authOperations.logout);
+  };
 
   return (
     <header className={css.header}>
@@ -51,7 +59,9 @@ function AppBar() {
           )}
           {isLogged && (
             <li>
-              <Button className={css.button}>Log out</Button>
+              <Button className={css.button} onClick={handleLogout}>
+                Log out
+              </Button>
             </li>
           )}
         </ul>

@@ -1,10 +1,10 @@
-// import { useState } from 'react';
+import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import HomePageHeader from '../../components/HomePageHeader/HomePageHeader';
 import Button from '../../components/Button/Button';
+import Icon from '../../components/Icon/Icon';
 
-import icons from '../../icons/sprite.svg';
 import css from './HomePage.module.css';
 
 function HomePage() {
@@ -13,6 +13,11 @@ function HomePage() {
   const handleGetStarted = () => {
     navigate('/nannies');
   };
+
+  useEffect(() => {
+    document.body.classList.remove('app');
+    document.body.classList.add('home');
+  }, []);
 
   return (
     <div className={css.container}>
@@ -23,18 +28,16 @@ function HomePage() {
           <p className={css.text}>Find Babysitters Online for All Occasions</p>
           <Button className={css.button} onClick={handleGetStarted}>
             <span>Get started</span>
-            <svg className={css.icon} width={18} height={24}>
-              <use href={`${icons}#arrow`}></use>
-            </svg>
+            <span className={css.icon}>
+              <Icon width={18} height={24} name="arrow" />
+            </span>
           </Button>
         </div>
       </div>
       <div className={css.rightHalf}>
         <div className={css.expBox}>
           <div className={css.checkDiv}>
-            <svg width={20} height={15}>
-              <use href={`${icons}#check`}></use>
-            </svg>
+            <Icon width={20} height={15} name="check" />
           </div>
           <div>
             <p className={css.expText}>Experienced nannies</p>

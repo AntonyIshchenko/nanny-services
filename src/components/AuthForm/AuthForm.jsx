@@ -1,9 +1,14 @@
+import { useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
+import { useDispatch, useSelector } from 'react-redux';
 
 import Button from '../Button/Button';
+import Icon from '../Icon/Icon.jsx';
+
+import authOperations from '../../redux/auth/operations.js';
+import authSelectors from '../../redux/auth/selectors.js';
 import schemas from '../../schemas/auth.js';
-import icons from '../../icons/sprite.svg';
 import css from './AuthForm.module.css';
 
 const signUpDefaultValues = () => ({
@@ -33,17 +38,23 @@ function AuthForm({ logIn = false, onClose }) {
           resolver: yupResolver(schemas.signUp),
         }
   );
+  const isLogged = useSelector(authSelectors.isLogged);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    if (isLogged) onClose(false);
+  }, [isLogged, onClose]);
 
   const onSubmit = data => {
-    console.log(data);
+    dispatch(
+      logIn ? authOperations.login(data) : authOperations.register(data)
+    );
   };
 
   return (
     <>
       <button className={css.closeButton} onClick={() => onClose(false)}>
-        <svg width={32} height={32}>
-          <use href={`${icons}#x`}></use>
-        </svg>
+        <Icon width={32} height={32} name="x" />
       </button>
       <h2 className={css.heading}>{logIn ? 'Log In' : 'Registration'}</h2>
       <p className={css.text}>

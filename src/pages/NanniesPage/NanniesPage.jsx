@@ -6,7 +6,7 @@ import { getNannies } from '../../redux/services/operations';
 import NanniesList from '../../components/NanniesList/NanniesList';
 import NannyItem from '../../components/NannyItem/NannyItem';
 import Button from '../../components/Button/Button';
-// import css from './NanniesPage.module.css';
+import css from './NanniesPage.module.css';
 
 function isDevMode() {
   return import.meta.env.DEV;
@@ -20,6 +20,11 @@ function NanniesPage() {
   // const isError = useSelector(servSelect.isError);
 
   const dispatch = useDispatch();
+
+  useEffect(() => {
+    document.body.classList.remove('home');
+    document.body.classList.add('app');
+  }, []);
 
   useEffect(() => {
     if (items.length === 0 && !devRun && !isEnd) {
@@ -41,7 +46,7 @@ function NanniesPage() {
         ))}
       </NanniesList>
       {!isEnd && (
-        <Button filled={true} onClick={handleLoadMore}>
+        <Button className={css.loadMore} filled={true} onClick={handleLoadMore}>
           Load more
         </Button>
       )}
