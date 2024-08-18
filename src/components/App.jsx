@@ -1,12 +1,12 @@
 import { lazy, Suspense, useEffect } from 'react';
+import { useSelector } from 'react-redux';
 import { Route, Routes, Navigate } from 'react-router-dom';
 
-import { db } from '../firebase/init.js';
-import authSelectors from '../redux/auth/selectors.js';
-// import { getDBData } from '../firebase/operations.js';
 import AppBar from './AppBar/AppBar';
 import Layout from './Layout/Layout';
-import { useSelector } from 'react-redux';
+import PrivateRoute from './PrivateRoute.jsx';
+import { db } from '../firebase/init.js';
+import authSelectors from '../redux/auth/selectors.js';
 
 const HomePage = lazy(() => import('../pages/HomePage/HomePage.jsx'));
 const NanniesPage = lazy(() => import('../pages/NanniesPage/NanniesPage.jsx'));
@@ -37,7 +37,12 @@ function App() {
           <Routes>
             <Route path="/" element={<HomePage />} />
             <Route path="/nannies" element={<NanniesPage />} />
-            <Route path="/favorites" element={<FavoritesPage />} />
+            <Route
+              path="/favorites"
+              element={
+                <PrivateRoute component={<FavoritesPage />} redirectTo="/" />
+              }
+            />
             <Route path="*" element={<Navigate to="/" />} />
           </Routes>
         </Suspense>

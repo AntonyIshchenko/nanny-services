@@ -1,9 +1,35 @@
-import css from './NannyItemHeader.module.css';
+import { useMemo } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 
 import Icon from '../Icon/Icon';
 
+import authSelectors from '../../redux/auth/selectors.js';
+import favoritesSelectors from '../../redux/favorites/selectors.js';
+import favoritesOperations from '../../redux/favorites/operations.js';
+import css from './NannyItemHeader.module.css';
+
 function NannyItemHeader({ item = {} }) {
-  const isFavotite = false;
+  const isLogged = useSelector(authSelectors.isLogged);
+  const favorites = useSelector(favoritesSelectors.idList);
+  const dispatch = useDispatch();
+
+  const isFavorite = useMemo(
+    () => favorites.includes(item.id),
+    [favorites, item]
+  );
+
+  const handleFavoritesClick = () => {
+    if (isLogged) {
+      dispatch(
+        isFavorite
+          ? favoritesOperations.deleteItem(item.id)
+          : favoritesOperations.addItem(item)
+      );
+    } else {
+      console.log('This feature is allowed only for authorized users!');
+    }
+  };
+
   return (
     <div className={css.container}>
       <div className={css.headingContainer}>
@@ -37,7 +63,8 @@ function NannyItemHeader({ item = {} }) {
         </ul>
         <button
           type="button"
-          className={`${css.button} ${isFavotite ? css.favorite : ''}`}
+          className={`${css.button} ${isFavorite ? css.favorite : ''}`}
+          onClick={handleFavoritesClick}
         >
           <Icon name="heart" width={26} height={26} />
         </button>

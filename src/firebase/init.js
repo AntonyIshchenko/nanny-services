@@ -5,6 +5,7 @@ import { getAuth, onAuthStateChanged } from 'firebase/auth';
 
 import store from '../redux/store';
 import authOperations from '../redux/auth/operations';
+import favoritesOperations from '../redux/favorites/operations';
 
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
@@ -36,7 +37,9 @@ onAuthStateChanged(auth, user => {
       authOperations.loginSync({ email, displayName, photoURL, uid })
     );
     store.dispatch(authOperations.getTheme(uid));
+    store.dispatch(favoritesOperations.getAll());
   } else {
     store.dispatch(authOperations.logoutSync());
+    store.dispatch(favoritesOperations.clearSync());
   }
 });

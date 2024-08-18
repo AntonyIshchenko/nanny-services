@@ -1,7 +1,15 @@
 import css from './Layout.module.css';
+import { useLocation } from 'react-router-dom';
 
 function Layout({ children }) {
-  return <div className={css.container}>{children}</div>;
+  const location = useLocation();
+  return (
+    <div
+      className={`${css.container} ${location.pathname === '/' ? '' : css.app}`}
+    >
+      {children}
+    </div>
+  );
 }
 
 export default Layout;

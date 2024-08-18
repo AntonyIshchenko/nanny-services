@@ -15,8 +15,6 @@ const register = createAsyncThunk(
       await createUserWithEmailAndPassword(auth, email, password);
       thunkAPI.dispatch(updateName(name));
     } catch (error) {
-      //   console.log(error);
-
       return thunkAPI.rejectWithValue(error.message);
     }
   }
@@ -45,12 +43,11 @@ const updateName = createAsyncThunk(
   'auth/updateName',
   async (name, thunkAPI) => {
     try {
-      const resp = await updateProfile(auth.currentUser, {
+      await updateProfile(auth.currentUser, {
         displayName: name,
       });
 
-      console.log('--updateName response');
-      console.log(resp);
+      return name;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
     }

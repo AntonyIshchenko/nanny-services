@@ -4,7 +4,7 @@ import { handlePending, handleRejected } from '../../utils/handleLoading.js';
 import operations from './operations.js';
 
 const initialState = {
-  user: { email: '', displayName: '', photoURL: '', uid: '' },
+  user: { email: '', displayName: null, photoURL: null, uid: '' },
   theme: null,
   isLogged: false,
   isLoading: false,
@@ -42,6 +42,13 @@ const slice = createSlice({
         state.user = initialState.user;
         state.isLogged = false;
         state.theme = null;
+      })
+      .addCase(operations.updateName.pending, handlePending)
+      .addCase(operations.updateName.rejected, handleRejected)
+      .addCase(operations.updateName.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.error = null;
+        state.user.displayName = action.payload;
       });
   },
 });
