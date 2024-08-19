@@ -10,7 +10,7 @@ import schemas from '../../schemas';
 import CloseButton from '../CloseButton/CloseButton.jsx';
 import Icon from '../Icon/Icon.jsx';
 import css from './AppointmentForm.module.css';
-import './select.css';
+import './timeSelect.css';
 
 const defaultValues = () => ({
   nannyId: '',
@@ -128,6 +128,7 @@ function AppointmentForm({ nanny, onClose }) {
                       ],
                     },
                   ]}
+                  isSearchable={false}
                   // menuIsOpen={true}
                 />
               )}

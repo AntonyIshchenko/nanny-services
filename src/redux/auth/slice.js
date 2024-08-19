@@ -49,6 +49,20 @@ const slice = createSlice({
         state.isLoading = false;
         state.error = null;
         state.user.displayName = action.payload;
+      })
+      // .addCase(operations.getTheme.pending, handlePending)
+      // .addCase(operations.getTheme.rejected, handleRejected)
+      .addCase(operations.getTheme.fulfilled, (state, action) => {
+        state.theme = action.payload;
+        state.isLoading = false;
+        state.error = null;
+      })
+      .addCase(operations.updateTheme.pending, handlePending)
+      .addCase(operations.updateTheme.rejected, handleRejected)
+      .addCase(operations.updateTheme.fulfilled, (state, action) => {
+        state.theme = action.payload;
+        state.isLoading = false;
+        state.error = null;
       });
   },
 });

@@ -77,9 +77,42 @@ async function deleteFavorite(uid, id) {
   }
 }
 
+async function getTheme(uid) {
+  const dbRef = ref(db, `users/${uid}/theme`);
+
+  try {
+    const snapshot = await get(query(dbRef));
+
+    let data = null;
+    if (snapshot.exists()) {
+      const res = snapshot.exportVal();
+      data = res;
+    }
+
+    return { error: null, data };
+  } catch (error) {
+    return { error, data: null };
+  }
+}
+
+async function setTheme(uid, theme) {
+  const dbRef = ref(db, `users/${uid}/theme`);
+
+  try {
+    const res = await set(dbRef, theme);
+    console.log(res);
+
+    return { error: null, data: theme };
+  } catch (error) {
+    return { error, data: null };
+  }
+}
+
 export default {
   getDBData,
   getFavorites,
   addFavorite,
   deleteFavorite,
+  getTheme,
+  setTheme,
 };

@@ -7,6 +7,7 @@ import NanniesList from '../../components/NanniesList/NanniesList';
 import NannyItem from '../../components/NannyItem/NannyItem';
 import Button from '../../components/Button/Button';
 import css from './NanniesPage.module.css';
+import FiltersPanel from '../../components/FiltersPanel/FiltersPanel.jsx';
 
 function isDevMode() {
   return import.meta.env.DEV;
@@ -16,8 +17,6 @@ function NanniesPage() {
   const [devRun, setDevRun] = useState(isDevMode);
   const items = useSelector(servSelect.nannies);
   const isEnd = useSelector(servSelect.isEnd);
-  // const isLoading = useSelector(servSelect.isLoading);
-  // const isError = useSelector(servSelect.isError);
 
   const dispatch = useDispatch();
 
@@ -40,6 +39,7 @@ function NanniesPage() {
 
   return (
     <>
+      <FiltersPanel />
       <NanniesList>
         {items.map(item => (
           <NannyItem key={item.id} item={item} />

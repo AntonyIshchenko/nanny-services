@@ -30,6 +30,7 @@
   border-color: var(--theme-main);
   transition: border-color var(--duration) var(--time-function);
 }
+
 .time-select-container .time-select__control--is-focused:hover {
   border-color: var(--theme-main);
 }
@@ -59,10 +60,6 @@
   font-size: 16px;
   line-height: 125%;
   color: var(--black-main);
-  /* color: #414343;
-  font-weight: 600; */
-  /* letter-spacing: -0.32px; */
-  /* @include font(16, 24); */
 }
 
 .time-select__control .time-select__input-container {
@@ -71,10 +68,6 @@
   font-size: 16px;
   line-height: 125%;
   color: var(--black-main);
-  /* color: #414343;
-  font-weight: 600; */
-  /* letter-spacing: -0.32px; */
-  /* @include font(16, 24); */
 }
 
 .time-select__control .time-select__indicator-separator {
@@ -95,6 +88,7 @@
 .time-select-container .time-select__menu-list {
   padding: 0;
 }
+
 .time-select__menu-list .time-select__option {
   text-align: center;
   font-weight: 500;

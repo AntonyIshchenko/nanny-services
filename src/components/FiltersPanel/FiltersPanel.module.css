@@ -1,0 +1,17 @@
+.container {
+  margin-bottom: 32px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.filtersWrapper {
+  width: 226px;
+}
+
+.heading {
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 129%;
+  color: var(--feature-name);
+  margin-bottom: 8px;
+}

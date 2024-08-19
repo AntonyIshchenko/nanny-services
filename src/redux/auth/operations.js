@@ -6,6 +6,7 @@ import {
   updateProfile,
 } from 'firebase/auth';
 
+import firebaseOperations from '../../firebase/operations';
 import { auth } from '../../firebase/init.js';
 
 const register = createAsyncThunk(
@@ -54,8 +55,10 @@ const updateName = createAsyncThunk(
   }
 );
 
-const getTheme = createAsyncThunk('auth/updateTheme', async (_, thunkAPI) => {
+const getTheme = createAsyncThunk('auth/getTheme', async (_, thunkAPI) => {
   try {
+    const theme = await firebaseOperations.getTheme(auth.currentUser.uid);
+    return theme.data;
   } catch (error) {
     return thunkAPI.rejectWithValue(error.message);
   }
@@ -63,8 +66,14 @@ const getTheme = createAsyncThunk('auth/updateTheme', async (_, thunkAPI) => {
 
 const updateTheme = createAsyncThunk(
   'auth/updateTheme',
-  async (_, thunkAPI) => {
+  async (theme, thunkAPI) => {
     try {
+      const res = await firebaseOperations.setTheme(
+        auth.currentUser.uid,
+        theme
+      );
+
+      return theme;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
     }
