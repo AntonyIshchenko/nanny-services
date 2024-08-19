@@ -4,11 +4,11 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import { useDispatch, useSelector } from 'react-redux';
 
 import Button from '../Button/Button';
-import Icon from '../Icon/Icon.jsx';
+import CloseButton from '../CloseButton/CloseButton.jsx';
 
 import authOperations from '../../redux/auth/operations.js';
 import authSelectors from '../../redux/auth/selectors.js';
-import schemas from '../../schemas/auth.js';
+import schemas from '../../schemas';
 import css from './AuthForm.module.css';
 
 const signUpDefaultValues = () => ({
@@ -53,9 +53,7 @@ function AuthForm({ logIn = false, onClose }) {
 
   return (
     <>
-      <button className={css.closeButton} onClick={() => onClose(false)}>
-        <Icon width={32} height={32} name="x" />
-      </button>
+      <CloseButton onClick={() => onClose(false)} />
       <h2 className={css.heading}>{logIn ? 'Log In' : 'Registration'}</h2>
       <p className={css.text}>
         {logIn

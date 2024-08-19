@@ -10,7 +10,7 @@ const messages = {
 
 const emailRegExp = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
 
-const signUp = yup.object({
+export const signUp = yup.object({
   name: yup
     .string()
     .trim()
@@ -30,7 +30,7 @@ const signUp = yup.object({
     .matches(/^\S*$/, messages.hasWhiteSpace),
 });
 
-const logIn = yup.object({
+export const logIn = yup.object({
   email: yup
     .string()
     .trim()
