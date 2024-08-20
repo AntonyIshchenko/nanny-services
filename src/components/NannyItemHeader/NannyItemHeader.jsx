@@ -1,5 +1,6 @@
 import { useMemo } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import toast from 'react-hot-toast';
 
 import Icon from '../Icon/Icon';
 
@@ -26,7 +27,7 @@ function NannyItemHeader({ item = {} }) {
           : favoritesOperations.addItem(item)
       );
     } else {
-      console.log('This feature is allowed only for authorized users!');
+      toast.error('This feature is allowed only for authorized users!');
     }
   };
 

@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useDispatch, useSelector } from 'react-redux';
@@ -10,6 +10,7 @@ import authOperations from '../../redux/auth/operations.js';
 import authSelectors from '../../redux/auth/selectors.js';
 import schemas from '../../schemas';
 import css from './AuthForm.module.css';
+import Icon from '../Icon/Icon.jsx';
 
 const signUpDefaultValues = () => ({
   name: '',
@@ -38,6 +39,7 @@ function AuthForm({ logIn = false, onClose }) {
           resolver: yupResolver(schemas.signUp),
         }
   );
+  const [showPass, setShowPass] = useState(false);
   const isLogged = useSelector(authSelectors.isLogged);
   const dispatch = useDispatch();
 
@@ -89,12 +91,19 @@ function AuthForm({ logIn = false, onClose }) {
           <input
             {...register('password')}
             className={css.input}
-            type="password"
+            type={showPass ? 'text' : 'password'}
             placeholder="Password"
           />
           {errors.password && (
             <p className={css.errorText}>{`*${errors.password.message}`}</p>
           )}
+          <button
+            type="button"
+            className={css.passButton}
+            onClick={() => setShowPass(!showPass)}
+          >
+            <Icon name={showPass ? 'eye-off' : 'eye'} width={20} height={20} />
+          </button>
         </div>
         <Button type="submit" className={css.button} filled={true}>
           {logIn ? 'Log In' : 'Sign Up'}

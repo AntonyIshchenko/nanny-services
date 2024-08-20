@@ -2,6 +2,7 @@ import { Controller, useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useSelector } from 'react-redux';
 import Select, { components } from 'react-select';
+import toast from 'react-hot-toast';
 
 import Button from '../Button/Button';
 
@@ -44,8 +45,8 @@ function AppointmentForm({ nanny, onClose }) {
     resolver: yupResolver(schemas.appointment),
   });
 
-  const onSubmit = data => {
-    console.log(data);
+  const onSubmit = () => {
+    toast.success('The form is successfully submitted!');
     onClose(false);
   };
 

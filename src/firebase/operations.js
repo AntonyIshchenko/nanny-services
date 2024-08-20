@@ -99,8 +99,7 @@ async function setTheme(uid, theme) {
   const dbRef = ref(db, `users/${uid}/theme`);
 
   try {
-    const res = await set(dbRef, theme);
-    console.log(res);
+    await set(dbRef, theme);
 
     return { error: null, data: theme };
   } catch (error) {

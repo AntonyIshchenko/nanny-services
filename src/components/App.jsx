@@ -1,6 +1,7 @@
 import { lazy, Suspense, useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { Route, Routes, Navigate } from 'react-router-dom';
+import toast, { Toaster } from 'react-hot-toast';
 
 import AppBar from './AppBar/AppBar';
 import Layout from './Layout/Layout';
@@ -25,7 +26,7 @@ function App() {
 
   useEffect(() => {
     if (!db) {
-      console.log('DB is not connected!');
+      toast.error('DB is not connected!');
     }
   }, []);
 
@@ -47,6 +48,7 @@ function App() {
           </Routes>
         </Suspense>
       </Layout>
+      <Toaster position="bottom-right" toastOptions={{ duration: 5000 }} />
     </>
   );
 }

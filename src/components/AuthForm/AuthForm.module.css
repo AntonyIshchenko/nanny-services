@@ -56,6 +56,27 @@ button.button {
   position: relative;
 }
 
+.passButton {
+  position: absolute;
+  top: 16px;
+  right: 18px;
+  width: 20px;
+  height: 20px;
+  border: none;
+  background-color: transparent;
+  fill: none;
+  stroke: var(--black-main);
+
+  transition: transform var(--duration) var(--time-function),
+    stroke var(--duration) var(--time-function);
+}
+
+.passButton:hover,
+.passButton:focus {
+  transform: scale(1.1);
+  stroke: var(--theme-main);
+}
+
 .errorText {
   color: var(--error-main);
   padding-left: 16px;
