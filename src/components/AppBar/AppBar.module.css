@@ -17,7 +17,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0 128px;
+  padding: 0 16px;
 }
 
 .nav {
@@ -124,4 +124,58 @@ button.userButton:focus {
   letter-spacing: -0.01em;
   color: var(--white-main);
   overflow: hidden;
+}
+
+@media (min-width: 768px) {
+  .header {
+    height: 68px;
+  }
+
+  .container {
+    padding: 0 24px;
+  }
+  .userName {
+    max-width: 100px;
+    font-size: 16px;
+  }
+  button.userButton {
+    margin-right: 12px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .header {
+    height: 68px;
+  }
+
+  .container {
+    padding: 0 32px;
+  }
+
+  .userName {
+    max-width: 100px;
+    font-size: 16px;
+  }
+
+  button.userButton {
+    margin-right: 12px;
+  }
+}
+
+@media (min-width: 1440px) {
+  .header {
+    height: 88px;
+  }
+  .container {
+    padding: 0 128px;
+  }
+
+  .userName {
+    max-width: 100px;
+    font-size: 18px;
+  }
+
+  button.userButton {
+    margin-right: 16px;
+  }
 }

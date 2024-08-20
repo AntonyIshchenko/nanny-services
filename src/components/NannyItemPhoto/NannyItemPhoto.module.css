@@ -21,8 +21,30 @@
   height: 14px;
   top: 9px;
   right: 14px;
-  z-index: 9;
   border-radius: 50%;
   background-color: var(--price);
   border: 2px solid var(--white-main);
+}
+
+@media (min-width: 768px) {
+  .container {
+    width: 100px;
+    height: 100px;
+    padding: 12px;
+  }
+}
+@media (min-width: 1024px) {
+  .container {
+    width: 100px;
+    height: 100px;
+    padding: 12px;
+  }
+}
+
+@media (min-width: 1440px) {
+  .container {
+    width: 120px;
+    height: 120px;
+    padding: 12px;
+  }
 }

@@ -51,7 +51,7 @@ function AppointmentForm({ nanny, onClose }) {
 
   return (
     <>
-      <CloseButton onClose={() => onClose(false)} />
+      <CloseButton onClick={() => onClose(false)} />
       <h2 className={css.heading}>Make an appointment with a babysitter</h2>
       <p className={css.text}>
         Arranging a meeting with a caregiver for your child is the first step to
@@ -71,7 +71,7 @@ function AppointmentForm({ nanny, onClose }) {
 
       <form className={css.form} onSubmit={handleSubmit(onSubmit)}>
         <div className={css.inputGroup}>
-          <div className={css.inputWrapper}>
+          <div className={`${css.inputWrapper} ${css.inputWrapperAdd}`}>
             <input
               {...register('address')}
               className={css.input}
@@ -82,7 +82,7 @@ function AppointmentForm({ nanny, onClose }) {
               <p className={css.errorText}>{`*${errors.address.message}`}</p>
             )}
           </div>
-          <div className={css.inputWrapper}>
+          <div className={`${css.inputWrapper} ${css.inputWrapperAdd}`}>
             <input
               {...register('phone')}
               className={css.input}

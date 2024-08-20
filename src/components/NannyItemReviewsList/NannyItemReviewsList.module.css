@@ -57,3 +57,85 @@
   fill: var(--rating);
   stroke: var(--rating);
 }
+
+@media (min-width: 768px) {
+  .list {
+    margin: 16px 0;
+    gap: 16px;
+  }
+  .reviewer {
+    font-size: 14px;
+  }
+
+  .rating {
+    font-size: 14px;
+  }
+
+  .comment {
+    font-size: 14px;
+  }
+  .heading {
+    margin-bottom: 12px;
+  }
+
+  .revAvatar {
+    width: 40px;
+    height: 40px;
+    font-size: 16px;
+  }
+}
+@media (min-width: 1024px) {
+  .list {
+    margin: 16px 0;
+    gap: 16px;
+  }
+  .reviewer {
+    font-size: 14px;
+  }
+
+  .rating {
+    font-size: 14px;
+  }
+
+  .comment {
+    font-size: 14px;
+  }
+  .heading {
+    margin-bottom: 12px;
+  }
+
+  .revAvatar {
+    width: 40px;
+    height: 40px;
+    font-size: 16px;
+  }
+}
+
+@media (min-width: 1440px) {
+  .list {
+    margin: 48px 0;
+    gap: 25px;
+  }
+
+  .reviewer {
+    font-size: 16px;
+  }
+
+  .rating {
+    font-size: 16px;
+  }
+
+  .comment {
+    font-size: 16px;
+  }
+
+  .heading {
+    margin-bottom: 16px;
+  }
+
+  .revAvatar {
+    width: 44px;
+    height: 44px;
+    font-size: 20px;
+  }
+}

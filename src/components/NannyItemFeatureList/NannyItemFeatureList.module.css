@@ -27,3 +27,42 @@
   text-decoration: underline;
   text-decoration-skip-ink: none;
 }
+
+@media (min-width: 768px) {
+  .list {
+    margin-bottom: 16px;
+  }
+  .listItem {
+    padding: 8px 14px;
+  }
+  .text {
+    font-size: 14px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .list {
+    margin-bottom: 16px;
+  }
+  .listItem {
+    padding: 8px 14px;
+  }
+
+  .text {
+    font-size: 14px;
+  }
+}
+
+@media (min-width: 1440px) {
+  .list {
+    margin-bottom: 24px;
+  }
+
+  .listItem {
+    padding: 8px 16px;
+  }
+
+  .text {
+    font-size: 16px;
+  }
+}

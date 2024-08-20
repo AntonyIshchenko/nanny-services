@@ -123,3 +123,34 @@
 .time-select__menu-list .time-select__group {
   padding: 0;
 }
+
+@media (min-width: 768px) {
+  .time-select-container {
+    height: 48px;
+  }
+  .time-select-container .time-select__control {
+    padding: 14px 18px;
+    font-size: 16px;
+  }
+}
+@media (min-width: 1024px) {
+  .time-select-container {
+    height: 48px;
+  }
+
+  .time-select-container .time-select__control {
+    padding: 14px 18px;
+    font-size: 16px;
+  }
+}
+
+@media (min-width: 1440px) {
+  .time-select-container {
+    height: 52px;
+  }
+
+  .time-select-container .time-select__control {
+    padding: 16px 18px;
+    font-size: 16px;
+  }
+}
