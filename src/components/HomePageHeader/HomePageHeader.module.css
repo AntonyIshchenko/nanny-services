@@ -1,10 +1,10 @@
 .header {
   position: absolute;
   z-index: 99;
-  top: 32px;
+  top: 16px;
   left: 0;
   width: 100%;
-  padding: 20px 96px;
+  padding: 16px 32px;
   border-bottom: 1px solid rgba(251, 251, 251, 0.4);
 }
 
@@ -15,8 +15,7 @@
 }
 
 .right {
-  display: flex;
-  gap: 92px;
+  display: none;
 }
 
 .linksList {
@@ -55,7 +54,86 @@ button.button {
 }
 
 .modal {
+  width: 100%;
+  max-width: calc(100vw - 40px);
   background-color: var(--white-main);
   border-radius: 30px;
-  padding: 64px;
+  padding: 44px 24px 24px 24px;
+}
+
+@media (min-width: 375px) {
+  .modal {
+    max-width: 340px;
+  }
+}
+
+.menuModal {
+  background-color: var(--theme-main);
+  border-radius: 30px;
+  padding: 64px 32px 32px 32px;
+  top: 16px;
+  left: calc(100vw - 248px);
+  transform: none;
+}
+
+@media (min-width: 768px) {
+  .header {
+    top: 16px;
+    padding: 16px 56px;
+  }
+
+  .right {
+    display: flex;
+    gap: 28px;
+  }
+
+  .linksList {
+    gap: 24px;
+  }
+
+  button.button {
+    padding: 14px 24px;
+    height: 48px;
+  }
+
+  .menuButton {
+    display: none;
+  }
+
+  .modal {
+    width: 100%;
+    max-width: 566px;
+    padding: 32px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .header {
+    top: 28px;
+    padding: 20px 96px;
+  }
+
+  .right {
+    gap: 92px;
+  }
+
+  .linksList {
+    gap: 40px;
+  }
+
+  button.button {
+    padding: 14px 40px;
+    height: 48px;
+  }
+
+  .modal {
+    padding: 64px;
+  }
+}
+
+@media (min-width: 1440px) {
+  .header {
+    top: 32px;
+    padding: 20px 96px;
+  }
 }

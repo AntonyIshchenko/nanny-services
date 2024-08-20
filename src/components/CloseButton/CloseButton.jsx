@@ -1,9 +1,9 @@
 import Icon from '../Icon/Icon';
 import css from './CloseButton.module.css';
 
-function CloseButton({ onClose }) {
+function CloseButton({ className = '', ...props }) {
   return (
-    <button className={css.button} onClick={onClose}>
+    <button className={`${css.button} ${className}`} {...props}>
       <Icon width={32} height={32} name="x" />
     </button>
   );

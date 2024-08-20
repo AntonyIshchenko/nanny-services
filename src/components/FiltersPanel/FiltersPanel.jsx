@@ -32,6 +32,7 @@ const themeOptions = [
 ];
 
 function FiltersPanel() {
+  const isLogged = useSelector(authSelectors.isLogged);
   const theme = useSelector(authSelectors.theme);
   const dispatch = useDispatch();
 
@@ -53,21 +54,23 @@ function FiltersPanel() {
           isSearchable={false}
         />
       </div>
-      <div className={css.filtersWrapper}>
-        <p className={css.heading}>Theme</p>
-        <Select
-          defaultValue={themeOption}
-          value={themeOption}
-          components={{ DropdownIndicator }}
-          onChange={selected =>
-            dispatch(authOperations.updateTheme(selected.value))
-          }
-          className="filter-select-container"
-          classNamePrefix="filter-select"
-          options={themeOptions}
-          isSearchable={false}
-        />
-      </div>
+      {isLogged && (
+        <div className={css.filtersWrapper}>
+          <p className={css.heading}>Theme</p>
+          <Select
+            defaultValue={themeOption}
+            value={themeOption}
+            components={{ DropdownIndicator }}
+            onChange={selected =>
+              dispatch(authOperations.updateTheme(selected.value))
+            }
+            className="filter-select-container"
+            classNamePrefix="filter-select"
+            options={themeOptions}
+            isSearchable={false}
+          />
+        </div>
+      )}
     </div>
   );
 }

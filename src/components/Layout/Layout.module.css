@@ -1,12 +1,13 @@
 .container {
   max-width: 1440px;
   margin: 0 auto;
-  padding-bottom: 64px;
+  padding: 0;
 
   background-color: transparent;
 }
 
 .app {
+  padding-bottom: 64px;
   padding-top: 152px;
   padding-left: 128px;
   padding-right: 128px;

@@ -4,29 +4,39 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import ModalContainer from '../../components/ModalContainer/ModalContainer';
 import AuthForm from '../../components/AuthForm/AuthForm';
+import HomePageMobileMenu from '../HomePageMobileMenu/HomePageMobileMenu';
 import Logo from '../Logo/Logo';
 import Button from '../Button/Button';
+import MenuButton from '../MenuButton/MenuButton';
 import authSelectors from '../../redux/auth/selectors';
 import authOperations from '../../redux/auth/operations';
 import css from './HomePageHeader.module.css';
 
 function HomePageHeader() {
   const [isOpen, setIsOpen] = useState(false);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [authLogInForm, setAuthLogInForm] = useState(false);
   const isLogged = useSelector(authSelectors.isLogged);
   const dispatch = useDispatch();
 
-  const handleModalOpenClose = state => {
-    setIsOpen(state);
+  const handleOpenClose = (isOpenValue, isMenuOpenValue) => {
+    setIsOpen(isOpenValue);
+    setIsMenuOpen(isMenuOpenValue);
   };
 
   const handleAuthButtonClick = isLogIn => {
     setIsOpen(true);
+    setIsMenuOpen(false);
     setAuthLogInForm(isLogIn);
   };
 
   const handleLogout = () => {
-    dispatch(authOperations.logout());
+    dispatch(authOperations.logout())
+      .unwrap()
+      .then(() => {
+        setIsMenuOpen(false);
+        setIsOpen(false);
+      });
   };
 
   return (
@@ -78,14 +88,32 @@ function HomePageHeader() {
               )}
             </ul>
           </div>
+          <MenuButton
+            className={css.menuButton}
+            onClick={() => {
+              setIsOpen(true);
+              setIsMenuOpen(true);
+            }}
+          />
         </nav>
       </header>
       <ModalContainer
         isOpen={isOpen}
-        className={css.modal}
-        onClose={handleModalOpenClose}
+        className={isMenuOpen ? css.menuModal : css.modal}
+        onClose={() => handleOpenClose(false, false)}
       >
-        <AuthForm logIn={authLogInForm} onClose={handleModalOpenClose} />
+        {!isMenuOpen && (
+          <AuthForm
+            logIn={authLogInForm}
+            onClose={() => handleOpenClose(false, false)}
+          />
+        )}
+        {isMenuOpen && (
+          <HomePageMobileMenu
+            onClose={() => handleOpenClose(false, false)}
+            {...{ handleAuthButtonClick, handleLogout }}
+          />
+        )}
       </ModalContainer>
     </>
   );

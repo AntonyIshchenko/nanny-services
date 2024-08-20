@@ -2,16 +2,16 @@ button.button {
   width: 100%;
   padding: 16px;
   height: 52px;
-  margin-top: 22px;
+  /* margin-top: 22px; */
 }
 
 .heading {
   font-weight: 500;
-  font-size: 40px;
+  font-size: 28px;
   line-height: 120%;
   letter-spacing: -0.02em;
   color: var(--black-main);
-  margin-bottom: 20px;
+  margin-bottom: 16px;
 }
 
 .text {
@@ -19,7 +19,7 @@ button.button {
   font-size: 16px;
   line-height: 125%;
   color: var(--grey-text);
-  margin-bottom: 40px;
+  margin-bottom: 20px;
 }
 
 .form {
@@ -62,4 +62,27 @@ button.button {
   font-size: 14px;
 
   position: absolute;
+}
+
+@media (min-width: 768px) {
+  .heading {
+    font-size: 40px;
+    margin-bottom: 20px;
+  }
+
+  .text {
+    max-width: 438px;
+    font-size: 16px;
+    margin-bottom: 40px;
+  }
+
+  .input {
+    padding: 16px 18px;
+    width: 100%;
+    height: 52px;
+  }
+
+  button.button {
+    margin-top: 22px;
+  }
 }
