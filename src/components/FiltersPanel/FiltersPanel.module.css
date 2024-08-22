@@ -1,24 +1,33 @@
 .container {
-  margin-bottom: 32px;
+  margin-bottom: 12px;
   display: flex;
   justify-content: space-between;
 }
 
 .filtersWrapper {
-  width: 226px;
+  width: 112px;
 }
 
 .heading {
   font-weight: 500;
-  font-size: 14px;
+  font-size: 12px;
   line-height: 129%;
   color: var(--feature-name);
-  margin-bottom: 8px;
+  margin-bottom: 4px;
 }
 
 @media (min-width: 768px) {
   .container {
     margin-bottom: 24px;
+  }
+
+  .heading {
+    font-size: 14px;
+    margin-bottom: 8px;
+  }
+
+  .filtersWrapper {
+    width: 226px;
   }
 }
 

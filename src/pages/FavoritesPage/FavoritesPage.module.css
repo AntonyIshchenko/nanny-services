@@ -1,0 +1,17 @@
+.container {
+  width: 80vw;
+  height: 80vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  margin: 0 auto;
+}
+
+.message {
+  color: var(--theme-main);
+  font-size: 24px;
+  line-height: 150%;
+  letter-spacing: -0.02em;
+  max-width: 800px;
+}

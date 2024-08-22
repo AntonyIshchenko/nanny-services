@@ -14,7 +14,11 @@ function HomePageMobileMenu({ onClose, handleAuthButtonClick, handleLogout }) {
     <div className={css.right}>
       <ul className={css.linksList}>
         <li>
-          <Link className={css.link} to="/" onClick={onClose}>
+          <Link
+            className={`${css.link} ${css.activeLink}`}
+            to="/"
+            onClick={onClose}
+          >
             Home
           </Link>
         </li>

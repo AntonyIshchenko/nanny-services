@@ -18,7 +18,7 @@ const getFeatures = item => {
       title: 'Characters',
       value: Object.values(item.characters)
         .map(c => c.trim().slice(0, 1).toUpperCase() + c.trim().slice(1))
-        .join(),
+        .join(', '),
     },
     education: { title: 'Education', value: item.education },
   };

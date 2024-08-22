@@ -47,7 +47,7 @@ function HomePageHeader() {
           <div className={css.right}>
             <ul className={css.linksList}>
               <li>
-                <Link className={css.link} to="/">
+                <Link className={`${css.link} ${css.activeLink}`} to="/">
                   Home
                 </Link>
               </li>

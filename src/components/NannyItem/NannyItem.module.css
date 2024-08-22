@@ -1,7 +1,9 @@
 .container {
-  padding: 24px;
+  position: relative;
+  padding: 12px;
   display: flex;
-  gap: 24px;
+  flex-direction: column;
+  gap: 12px;
   background-color: var(--white-main);
 
   border-radius: 24px;
@@ -12,10 +14,10 @@
 }
 
 .description {
-  font-size: 16px;
+  font-size: 14px;
   line-height: 125%;
   color: var(--grey-text);
-  margin-bottom: 14px;
+  margin-bottom: 10px;
 }
 
 .buttonsList {
@@ -24,9 +26,9 @@
 }
 
 button.appointment {
-  padding: 14px 28px;
+  padding: 14px 16px;
   font-weight: 500;
-  font-size: 16px;
+  font-size: 14px;
   line-height: 125%;
   letter-spacing: -0.01em;
 }
@@ -35,13 +37,14 @@ button.appointment {
   background-color: var(--white-main);
   border-radius: 30px;
   width: 100%;
-  max-width: 599px;
-  padding: 64px;
-  overflow: auto;
+  max-width: 85vw;
+  padding: 48px 16px 16px 16px;
+  /* overflow: auto; */
 }
 
 @media (min-width: 768px) {
   .container {
+    flex-direction: row;
     padding: 20px;
     gap: 20px;
   }
@@ -50,7 +53,18 @@ button.appointment {
     max-width: 599px;
     padding: 48px 32px 32px 32px;
   }
+
+  .description {
+    font-size: 16px;
+    margin-bottom: 14px;
+  }
+
+  button.appointment {
+    padding: 14px 28px;
+    font-size: 16px;
+  }
 }
+
 @media (min-width: 1024px) {
   .container {
     padding: 20px;

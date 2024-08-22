@@ -2,7 +2,7 @@
   background: transparent;
   /* width: 232px; */
   width: 100%;
-  height: 52px;
+  height: 36px;
 }
 
 .time-select-container .time-select__control {
@@ -11,8 +11,8 @@
   background: transparent;
   border: 1px solid var(--grey-modal-border);
   border-radius: 12px;
-  padding: 16px 18px;
-  font-size: 16px;
+  padding: 10px 10px;
+  font-size: 14px;
   line-height: 125%;
   color: var(--black-main);
   outline: none;
@@ -57,7 +57,7 @@
 
 .time-select__control .time-select__single-value {
   margin: 0;
-  font-size: 16px;
+  font-size: 14px;
   line-height: 125%;
   color: var(--black-main);
 }
@@ -65,7 +65,7 @@
 .time-select__control .time-select__input-container {
   margin: 0;
   padding: 0;
-  font-size: 16px;
+  font-size: 14px;
   line-height: 125%;
   color: var(--black-main);
 }
@@ -76,9 +76,9 @@
 
 .time-select-container .time-select__menu {
   margin-top: 8px;
-  width: 150px;
-  margin-left: 82px;
-  padding: 16px;
+  width: max-content;
+  margin-left: 0px;
+  padding: 10px;
 
   border-radius: 12px;
   fill: #fff;
@@ -128,9 +128,25 @@
   .time-select-container {
     height: 48px;
   }
+
   .time-select-container .time-select__control {
     padding: 14px 18px;
     font-size: 16px;
+  }
+
+  .time-select__control .time-select__input-container {
+    font-size: 16px;
+  }
+
+  .time-select__control .time-select__single-value {
+    font-size: 16px;
+  }
+
+  .time-select-container .time-select__menu {
+    margin-top: 8px;
+    width: 150px;
+    margin-left: 82px;
+    padding: 16px;
   }
 }
 @media (min-width: 1024px) {

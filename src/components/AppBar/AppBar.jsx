@@ -6,13 +6,16 @@ import ModalContainer from '../../components/ModalContainer/ModalContainer';
 import AuthForm from '../../components/AuthForm/AuthForm';
 import Logo from '../Logo/Logo';
 import Button from '../Button/Button';
+import MenuButton from '../MenuButton/MenuButton';
 import authSelectors from '../../redux/auth/selectors';
 import authOperations from '../../redux/auth/operations';
 import css from './AppBar.module.css';
 import Icon from '../Icon/Icon';
+import AppMobileMenu from '../AppMobileMenu/AppMobileMenu';
 
 function AppBar() {
   const [isOpen, setIsOpen] = useState(false);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [authLogInForm, setAuthLogInForm] = useState(false);
   const location = useLocation();
   const isLogged = useSelector(authSelectors.isLogged);
@@ -21,17 +24,24 @@ function AppBar() {
 
   if (location.pathname === '/') return <></>;
 
-  const handleModalOpenClose = state => {
-    setIsOpen(state);
+  const handleOpenClose = (isOpenValue, isMenuOpenValue) => {
+    setIsOpen(isOpenValue);
+    setIsMenuOpen(isMenuOpenValue);
   };
 
   const handleAuthButtonClick = isLogIn => {
     setIsOpen(true);
+    setIsMenuOpen(false);
     setAuthLogInForm(isLogIn);
   };
 
   const handleLogout = () => {
-    dispatch(authOperations.logout());
+    dispatch(authOperations.logout())
+      .unwrap()
+      .then(() => {
+        setIsMenuOpen(false);
+        setIsOpen(false);
+      });
   };
 
   return (
@@ -101,14 +111,32 @@ function AppBar() {
               </li>
             )}
           </ul>
+          <MenuButton
+            className={css.menuButton}
+            onClick={() => {
+              setIsOpen(true);
+              setIsMenuOpen(true);
+            }}
+          />
         </div>
       </header>
       <ModalContainer
         isOpen={isOpen}
-        className={css.modal}
-        onClose={handleModalOpenClose}
+        className={isMenuOpen ? css.menuModal : css.modal}
+        onClose={() => handleOpenClose(false, false)}
       >
-        <AuthForm logIn={authLogInForm} onClose={handleModalOpenClose} />
+        {!isMenuOpen && (
+          <AuthForm
+            logIn={authLogInForm}
+            onClose={() => handleOpenClose(false, false)}
+          />
+        )}
+        {isMenuOpen && (
+          <AppMobileMenu
+            onClose={() => handleOpenClose(false, false)}
+            {...{ handleAuthButtonClick, handleLogout }}
+          />
+        )}
       </ModalContainer>
     </>
   );

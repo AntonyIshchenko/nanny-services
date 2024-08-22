@@ -11,6 +11,7 @@
 }
 
 .link {
+  position: relative;
   display: block;
   font-size: 16px;
   line-height: 125%;
@@ -23,6 +24,18 @@
 .link:hover,
 .link:focus {
   transform: scale(1.1);
+}
+
+.activeLink::before {
+  content: '';
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  border: none;
+  background-color: var(--white-main);
+  position: absolute;
+  top: calc(50% - 4px);
+  left: -20px;
 }
 
 .buttonsList {

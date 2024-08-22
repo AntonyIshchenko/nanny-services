@@ -1,7 +1,7 @@
 /* Container +++ */
 .filter-select-container {
   width: 100%;
-  height: 48px;
+  height: 36px;
 }
 
 .filter-select-container .filter-select__control {
@@ -9,7 +9,7 @@
   height: 100%;
   background: transparent;
   border-radius: 14px;
-  padding: 14px 18px;
+  padding: 10px 10px;
   background-color: var(--theme-main);
   outline: none;
   border: none;
@@ -39,7 +39,7 @@
 .filter-select__control .filter-select__single-value {
   margin: 0;
   font-weight: 500;
-  font-size: 18px;
+  font-size: 14px;
   line-height: 111%;
   color: var(--white-main);
 }
@@ -83,7 +83,7 @@
 }
 
 .filter-select__menu .filter-select__option {
-  font-size: 18px;
+  font-size: 14px;
   line-height: 111%;
   color: var(--grey-modal);
   border-radius: 14px;
